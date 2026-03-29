@@ -1,0 +1,61 @@
+{
+  "description": "Example local source manifest for Azerbaijani LM corpora",
+  "sources": [
+    {
+      "name": "azerbaijani_multi_news",
+      "format": "jsonl.gz",
+      "paths": [
+        "data/raw/lm/azerbaijani-multi-news/*.jsonl.gz"
+      ],
+      "text_fields": [
+        "title",
+        "summary",
+        "text"
+      ],
+      "record_id_field": "id",
+      "field_joiner": "\n\n"
+    },
+    {
+      "name": "news_azerbaijan",
+      "format": "parquet",
+      "paths": [
+        "data/raw/lm/news_azerbaijan/*.parquet"
+      ],
+      "text_fields": [
+        "title",
+        "text"
+      ],
+      "record_id_field": "id",
+      "field_joiner": "\n\n"
+    },
+    {
+      "name": "butabytes_sentences",
+      "format": "txt.gz",
+      "paths": [
+        "data/raw/lm/butabytes/sentences/*.txt.gz"
+      ],
+      "text_mode": "lines"
+    },
+    {
+      "name": "butabytes_books",
+      "format": "jsonl",
+      "paths": [
+        "data/raw/lm/butabytes/books/*.jsonl"
+      ],
+      "text_fields": [
+        "title",
+        "text"
+      ],
+      "record_id_field": "id",
+      "field_joiner": "\n\n"
+    },
+    {
+      "name": "az_wikipedia_plaintext",
+      "format": "txt",
+      "paths": [
+        "data/raw/lm/azwiki/plaintext/*.txt"
+      ],
+      "text_mode": "paragraphs"
+    }
+  ]
+}

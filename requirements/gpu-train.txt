@@ -1,0 +1,7 @@
+# Future transformer training dependencies for a remote GPU box.
+# Keep torch itself in the base GPU image so CUDA compatibility stays explicit.
+accelerate>=1.1,<2
+datasets>=3,<5
+safetensors>=0.4,<1
+tensorboard>=2.17,<3
+transformers>=4.46,<5

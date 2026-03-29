@@ -1,0 +1,3 @@
+# LM corpus-prep and tokenizer dependencies.
+pyarrow>=18,<20
+sentencepiece>=0.2,<0.3

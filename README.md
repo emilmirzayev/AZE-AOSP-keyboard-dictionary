@@ -7,6 +7,12 @@ This repo builds two kinds of outputs:
 - a human-readable `.combined` source dictionary
 - a compiled binary `.dict` that can be imported into FUTO Keyboard
 
+This repo also now includes an LM data-preparation pipeline for:
+
+- normalizing heterogeneous Azerbaijani text corpora
+- building train and validation text files for transformer experiments
+- training a SentencePiece tokenizer compatible with FUTO's documented LM requirements
+
 ## What This Repo Does
 
 The pipeline combines three sources:
@@ -28,6 +34,8 @@ This keeps the final keyboard dictionary practical while still recognizing many 
 ## Repo Layout
 
 - `scripts/`: build and extraction scripts
+- `docker/`: reproducible container environments
+- `requirements/`: Python dependency sets
 - `data/raw/`: committed small inputs plus large local raw inputs
 - `data/intermediate/`: temporary and generated working files
 - `artifacts/`: final outputs that may be published
@@ -101,6 +109,10 @@ You need:
 - `make`
 - `curl`
 - `java`
+
+Or use the Docker environment described in:
+
+- `docs/development-environment.md`
 
 On macOS with Homebrew, one working setup is:
 
@@ -217,6 +229,32 @@ Outputs:
 - `data/intermediate/wiki_counts.sqlite`
 - `artifacts/az_ranked.combined`
 - `artifacts/main_az_ranked.dict`
+
+## LM Data Pipeline
+
+The LM work stays separate from the dictionary build. It prepares text and tokenizer assets, but does not yet train or export the transformer itself.
+
+See:
+
+- `docs/development-environment.md`
+- `docs/lm-pipeline.md`
+
+Core targets:
+
+```sh
+make lm-normalize
+make lm-build-corpus
+make lm-train-tokenizer
+make lm-pipeline
+```
+
+Expected local manifest:
+
+- `manifests/lm_sources.local.json`
+
+Template:
+
+- `manifests/lm_sources.example.json`
 
 ## Checksums
 

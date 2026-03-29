@@ -1,0 +1,2 @@
+# Core environment for the existing dictionary/bigram pipeline.
+# The current Python scripts use the standard library only.

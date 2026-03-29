@@ -8,6 +8,7 @@ Examples:
 - `az.aff`
 - `az.dic`
 - `list_of_words.md`
+- `lm/...` corpora such as JSONL, Parquet, or plain text exports
 
 This directory is mostly ignored by git so the repo can stay lightweight and legally cleaner.
 

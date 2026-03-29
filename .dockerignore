@@ -1,0 +1,14 @@
+.DS_Store
+.git
+.venv
+__pycache__/
+*.pyc
+
+# Local and generated data should stay on the host as bind mounts.
+artifacts/
+data/intermediate/
+data/raw/
+!data/raw/README.md
+!data/raw/list_of_words.md
+manifests/*.local.json
+manifests/checksums.local.txt

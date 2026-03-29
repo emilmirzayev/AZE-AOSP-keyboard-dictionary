@@ -1,0 +1,19 @@
+{
+  "orthography_markdown": {
+    "path": "data/raw/list_of_words.md",
+    "description": "Markdown-converted Azerbaijani orthography dictionary pages"
+  },
+  "wikipedia_dump": {
+    "path": "data/raw/azwiki-latest-pages-articles.xml.bz2",
+    "description": "Azerbaijani Wikipedia articles dump",
+    "source_url": "https://dumps.wikimedia.org/azwiki/"
+  },
+  "hunspell_aff": {
+    "path": "data/raw/az.aff",
+    "description": "Azerbaijani Hunspell affix file"
+  },
+  "hunspell_dic": {
+    "path": "data/raw/az.dic",
+    "description": "Azerbaijani Hunspell dictionary file"
+  }
+}

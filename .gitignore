@@ -1,0 +1,28 @@
+.DS_Store
+__pycache__/
+*.pyc
+
+# Local raw inputs
+data/raw/*
+!data/raw/README.md
+data/raw/*.bz2
+data/raw/*.xml
+data/raw/*.dic
+data/raw/*.aff
+data/raw/*.md
+data/raw/*.part
+data/raw/*.tmp
+
+# Intermediate files
+data/intermediate/*
+!data/intermediate/.gitkeep
+
+# Local manifests
+manifests/inputs.local.json
+manifests/checksums.local.txt
+
+# Old root-level generated outputs kept for now during transition
+az_wordlist.combined
+main_az.dict
+list_of_words.txt
+list_of_words_single_tokens.txt

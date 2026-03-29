@@ -11,7 +11,7 @@ This repo builds two kinds of outputs:
 
 The pipeline combines three sources:
 
-- an orthography-derived word list for trusted spellings
+- a committed orthography-derived word list for trusted spellings
 - Azerbaijani Hunspell data for stems and many inflected forms
 - the Azerbaijani Wikipedia dump for real unigram frequencies and next-word bigrams
 
@@ -28,13 +28,26 @@ This keeps the final keyboard dictionary practical while still recognizing many 
 ## Repo Layout
 
 - `scripts/`: build and extraction scripts
-- `data/raw/`: local raw inputs, not meant to be committed
+- `data/raw/`: committed small inputs plus large local raw inputs
 - `data/intermediate/`: temporary and generated working files
 - `artifacts/`: final outputs that may be published
 - `manifests/`: source manifests, checksums, and reproducibility metadata
 - `docs/`: technical notes
 
-## Required Local Inputs
+## Inputs
+
+This repo uses a mix of committed and local inputs.
+
+### Included in the repo
+
+- `data/raw/list_of_words.md`
+
+Notes:
+
+- this file is a markdown-converted word list derived from an Azerbaijani orthography dictionary (`orfoqrafiya lüğəti`)
+- it is used by both the baseline build and the ranked build
+
+### Required local inputs
 
 Put these files in `data/raw/`.
 
@@ -70,17 +83,6 @@ Notes:
 - these files provide stems and suffix rules
 - `az.dic` is not a frequency corpus
 - `az.aff` does not cover every flag seen in `az.dic`, so undefined flags are kept as exact forms only
-
-### 3. Orthography source markdown
-
-Expected filename:
-
-- `list_of_words.md`
-
-Notes:
-
-- this is the markdown-converted orthography source used for the baseline extraction step
-- it is kept local and is not required to be committed
 
 ## Running From Scratch
 
@@ -140,23 +142,13 @@ These targets download:
 - `data/raw/az.aff`
 - `data/raw/az.dic`
 
-### 4. Add the local orthography markdown
-
-Place your locally prepared orthography source at:
-
-```sh
-data/raw/list_of_words.md
-```
-
-This file is intentionally not fetched by `make`, because it is a local/project-specific input.
-
-### 5. Optionally record checksums
+### 4. Optionally record checksums
 
 ```sh
 make checksums
 ```
 
-### 6. Run a smoke test first
+### 5. Run a smoke test first
 
 ```sh
 make wiki-smoke
@@ -164,7 +156,7 @@ make wiki-smoke
 
 This validates the parser and weighting on a small slice of the Wikipedia dump.
 
-### 7. Build the full ranked dictionary
+### 6. Build the full ranked dictionary
 
 ```sh
 make ranked-dict
@@ -240,7 +232,7 @@ This writes:
 
 ## How The Ranked Pipeline Works
 
-1. Extract and clean orthography words from `list_of_words.md`
+1. Extract and clean orthography words from the committed `data/raw/list_of_words.md`
 2. Expand the subset of Hunspell suffix rules that are actually defined in `az.aff`
 3. Build:
    - `valid_forms.txt` for corpus filtering
@@ -282,6 +274,6 @@ Recommended not to commit:
 For this repo, yes, but only for the public inputs.
 
 - good fit: Wikipedia dump and Mozilla Hunspell files
-- not a good fit: local orthography markdown derived from a source you prepare yourself
+- not a good fit: the large or frequently changing local artifacts produced during experimentation
 
-That is why the repo includes optional `make fetch-*` targets for the public files, while `list_of_words.md` stays a manual local input.
+That is why the repo includes optional `make fetch-*` targets for the large public files, while the smaller committed orthography-derived word list stays in `data/raw/list_of_words.md`.

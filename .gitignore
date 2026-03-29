@@ -5,11 +5,11 @@ __pycache__/
 # Local raw inputs
 data/raw/*
 !data/raw/README.md
+!data/raw/list_of_words.md
 data/raw/*.bz2
 data/raw/*.xml
 data/raw/*.dic
 data/raw/*.aff
-data/raw/*.md
 data/raw/*.part
 data/raw/*.tmp
 

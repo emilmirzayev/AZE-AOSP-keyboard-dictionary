@@ -1,7 +1,7 @@
 {
   "orthography_markdown": {
     "path": "data/raw/list_of_words.md",
-    "description": "Markdown-converted Azerbaijani orthography dictionary pages"
+    "description": "Markdown-converted Azerbaijani orthography dictionary word list (Orfoqrafiya lugeti)"
   },
   "wikipedia_dump": {
     "path": "data/raw/azwiki-latest-pages-articles.xml.bz2",
